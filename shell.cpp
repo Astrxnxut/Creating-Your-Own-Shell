@@ -1,7 +1,7 @@
 #include "shell.hpp"
 
 Shell::Shell(){
-    debug = false;
+    setDebug(false);
     argc = 0;
 }
 
@@ -21,6 +21,7 @@ char* Shell::getArgv(){
 void Shell::setDebug(bool debug){
     this->debug = debug;
 
+    //Just here to test debug mode activating
     if(debug == true){
         cout << "Debug Mode is Active" << endl;
     }
