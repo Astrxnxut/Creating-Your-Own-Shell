@@ -1,14 +1,11 @@
-myshell: shell.o user_io.o myshell.o
-	g++ shell.o user_io.o myshell.o -o myshell
+myshell: main.o param.o
+	g++ main.o param.o -o myshell
 
-myshell.o: myshell.cpp
-	g++ -c myshell.cpp
+main.o: main.cpp
+	g++ -c main.cpp
 
-shell.o: shell.hpp shell.cpp
-	g++ -c shell.cpp
-
-user_io.o: user_io.hpp user_io.cpp
-	g++ -c user_io.cpp
+param.o: param.hpp param.cpp
+	g++ -c param.cpp
 
 clean:
 	rm *.o myshell
