@@ -6,7 +6,10 @@ Param::Param(){
     argumentCount = 0;
     background = 0;
 
-    cout << "Param main constructor operational" << endl;
+    //Updated: Initialize all argumentVector values to nullptr
+    for(int i = 0; i < MAXARGS; ++i){
+        argumentVector[i] = nullptr;
+    }
 }
 
 Param::~Param(){
@@ -14,6 +17,10 @@ Param::~Param(){
 }
 
 void Param::reset(){
+    //Updated: Reset input and output redirection for each new command
+    inputRedirect = nullptr;
+    outputRedirect = nullptr;
+
     argumentCount = 0;
     
     for(int i = 0; i < MAXARGS; ++i){
@@ -65,9 +72,32 @@ int Param::getArgc(){
 }
 
 void Param::printParams(){
+    //Updated: Print all Param values when testing in Debug mode
+    cout << "Argument Count: " << argumentCount << endl;
+
+    cout << "Argument Vector: ";
     for(int i = 0; i < argumentCount; ++i){
-        
         cout << argumentVector[i] << " ";
     }
     cout << endl;
+
+    cout << "Input Redirect: ";
+    if(inputRedirect != nullptr){
+        cout << inputRedirect;
+    }
+    else{
+        cout << "NULL";
+    }
+    cout << endl;
+
+    cout << "Output Redirect: ";
+    if(outputRedirect != nullptr){
+        cout << outputRedirect;
+    }
+    else{
+        cout << "NULL";
+    }
+    cout << endl;
+
+    cout << "Background: " << background << endl;
 }

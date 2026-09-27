@@ -1,11 +1,14 @@
-myshell: main.o param.o
-	g++ main.o param.o -o myshell
+myshell: myshell.o param.o parse.o
+	g++ -g -Wall myshell.o param.o parse.o -o myshell
 
-main.o: main.cpp
-	g++ -c main.cpp
+myshell.o: myshell.cpp
+	g++ -g -Wall -c myshell.cpp
 
 param.o: param.hpp param.cpp
-	g++ -c param.cpp
+	g++ -g -Wall -c param.cpp
+
+parse.o: parse.hpp parse.cpp
+	g++ -g -Wall -c parse.cpp
 
 clean:
 	rm *.o myshell
