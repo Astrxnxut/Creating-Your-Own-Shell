@@ -6,7 +6,6 @@ Param::Param(){
     argumentCount = 0;
     background = 0;
 
-    //Updated: Initialize all argumentVector values to nullptr
     for(int i = 0; i < MAXARGS; ++i){
         argumentVector[i] = nullptr;
     }
@@ -17,7 +16,7 @@ Param::~Param(){
 }
 
 void Param::reset(){
-    //Updated: Reset input and output redirection for each new command
+    //Reset input and output redirection for each new command
     inputRedirect = nullptr;
     outputRedirect = nullptr;
 
@@ -33,6 +32,11 @@ void Param::reset(){
 void Param::addToken(char* token){
     argumentVector[argumentCount] = token;
     ++argumentCount;
+
+    //execvp requires argumentVector to end with a NULL pointer
+    if(argumentCount < MAXARGS){
+        argumentVector[argumentCount] = nullptr;
+    }
 }
 
 void Param::setBackground(int backgroundValue){
