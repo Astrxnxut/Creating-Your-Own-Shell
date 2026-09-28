@@ -97,7 +97,7 @@ int main(int argc, char *argv[]){
             execvp(param.getArgv()[0], param.getArgv());
 
             //Only reaches here if execvp fails
-            cout << "Error: Command could not be executed." << endl;
+            cout << "Error: " + (string)param.getArgv()[0] + " is not a valid command." << endl;
             exit(1);
         }
         else{
